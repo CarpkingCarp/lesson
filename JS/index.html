@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="main.css" rel="stylesheet">
+    <title>Hello, world!</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+
+    
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">JSShop</span>
+          <span class="badge bg-dark">Dark 🔄</span>  
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav> 
+
+      <script>
+
+        var count = 0;
+
+        $('.badge').on('click', function(){
+          count = count + 1;
+          // console.log(count);
+          if(count % 2 == 1){$('.badge').html('Light 🔄')}
+        else {$('.badge').html('Dark 🔄')};
+        })
+
+        // if(count % 2 == 1){console.log('Light')}
+        // else {console.log('Dark')};
+
+        // badge 클릭횟수 홀수면 Light색
+        // badge 클릭횟수 짝수면 Dark색
+
+      </script>
+
+      <ul class="list-group" id="test1">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+
+      <div class="main-bg">
+        <h4>Shirts on Sale</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+      </div>
+
+      <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+          <form action="success.html">
+            <div class="my-3">
+              <input type="text" class="form-control" id="email">
+             </div>
+             <div class="my-3">
+               <input type="password" class="form-control" id="pw">
+             </div>
+             <button type="submit" class="btn btn-primary" id="send">전송</button>
+             <button type="button" class="btn btn-danger" id="close">닫기</button>
+          </form>
+        </div>
+      </div> 
+
+      <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        Id hic accusantium modi dolorum delectus alias. Ab sapiente cupiditate veniam. 
+        Vel necessitatibus impedit quaerat voluptas! 
+        Debitis corporis officiis corrupti dolorum dolor?
+
+      </div>
+
+      <div style="height: 1000px;"></div>
+      <script>
+        // 스크롤바 100px 내리면 로고폰트 작게 만들기
+        $(window).on('scroll', function(){
+    if($(window).scrollTop() > 100){
+        $('.navbar-brand').css('font-size', '20px');
+    } else {
+        $('.navbar-brand').css('font-size', '100px')
+    }
+});
+        // div 스크롤바 내린 양(scrolltop) + 눈에보이는 div 높이(clientheight) (픽셀 여유 두고 비교)== div의 실제높이(scrollheight)
+        
+        $('.lorem').on('scroll', function(){
+          if (document.querySelector('.lorem').scrollTop + document.querySelector('.lorem').clientHeight >= document.querySelector('.lorem').scrollHeight-10)
+          {
+          alert('약관확인햇나욤?');
+        }
+        });
+
+
+        $('.lorem').on('scroll', function(){
+            var 스크롤양 = document.querySelector('lorem').scrollTop;
+            var 실제높이 = document.querySelector('lorem').scrollHeight;
+            var div창크기 = document.querySelector('lorem').clientHeight;
+            console.log(스크롤양, 실제높이, div창크기);
+          });
+
+        // 전송버튼 누르면 input에 입력한 값 공백일경우 alertbox 띄우기 + 비밀번호 입력 x시 비밀번호 입력하세요 해야함 + 비밀번호 6자리 미만입력시 6자리 이상 입력해주세요 해야함.
+        $('form').on('submit', function(e){
+          if($('#email').val() ==''){alert('ID를 입력해주세요')}
+          else if($('#pw').val() ==''){alert('PW를 입력해주세요')}
+          else if($('#pw').val().length < 6){alert('PW는 6자리 이상입니다')};
+          e.preventDefault();
+        });
+
+      </script>
+
+      <!-- <script>
+
+        // 코딩해야 하는 것
+
+        // 1. 로그인하세요가 뜬 모달창에서의 닫기버튼을 누르면 모달창이 사라져야 함
+        // 닫기버튼을 지정해야함 -> 모달창이 사라지게 해야함 가장 부모태그는 black-bg
+
+        // 처음에 안뜨게하려고 bg에 디스플레이 논 부여. 그리고 로그인 눌렀을 때 떠야하는데 왜 안뜸??
+        $('#close').on('click', function(){
+            $('.black-bg').removeClass('show-modal');
+        });
+
+        $('#login').on('click', function(){
+            $('.black-bg').addClass('show-modal');
+        });
+
+
+        document.querySelectorAll('.list-group-item')[1]
+
+        document.querySelector('.navbar-toggler').addEventListener('click', 
+        function(){
+            document.querySelector('.list-group').classList.toggle('show');
+        })
+      </script>
+      <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box">
+              <img src="/car1.png">
+            </div>
+            <div class="slide-box">
+              <img src="/car2.png">
+            </div>
+            <div class="slide-box">
+              <img src="/car3.png">
+            </div>
+        </div>
+      </div>
+      <button class="slide-1">1</button>
+      <button class="slide-2">2</button>
+      <button class="slide-3">3</button>
+      <button class="previous">이전</button>
+      <button class="next">다음</button>
+
+
+
+   
+      <!-- <form>
+        <script>
+          var 지금사진 = 1;
+
+           $('.slide-1').on('click', function(){
+            $('.slide-container').css('transform', 'translateX(0vw)');
+            지금사진 += 1;
+          })
+
+          $('.slide-2').on('click', function(){
+            $('.slide-container').css('transform', 'translateX(-100vw)');
+            지금사진 += 1;
+          })
+
+          $('.slide-3').on('click', function(){
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+            지금사진 += 1;
+          })
+
+          
+         
+          $('.next').on('click', function(){
+            if(지금사진 == 1){
+              $('.slide-container').css('transform', 'translate(-100vw)');
+              지금사진 += 1 ;
+            }
+            else if(지금사진 == 2){
+              $('.slide-container').css('transform', 'translate(-200vw)');
+                지금사진 += 1;
+            } 
+            else if(지금사진 == 3){
+              $('.slide-container').css('transform', 'translate(0vw)')
+          }
+          })
+
+
+          $('.previous').on('click', function(){
+            if(지금사진 == 3){
+              $('.slide-container').css('transform', 'translate(-100vw)');
+              지금사진 -= 1;
+            }
+           
+          else if(지금사진 == 2){
+            $('.slide-container').css('transform', 'translate(0vw)');
+            지금사진 -= 1;}
+          })
+          
+          // $('.next').on('click', function(){
+          //   $('.slide-container').css('transform', 'translate(-'+지금사진 +'00vw)');
+          //   지금사진 += 1;
+          // })
+          // $('.previous').on('click', function(){
+          //   $('.slide-container').css('transform', 'translate(+'+지금사진 +'00vw)');
+          //   지금사진 -= 1;
+          // })
+        </script>
+      </form> -->
+
+    <!-- <script> -->
+      <!-- // function 시간ms계산기(A,B){
+      //   let result = (A*60 + B) * 1000
+      //   return result
+      // }
+
+      // console.log(시간ms계산기(2,50));
+
+      function 할인계산기(a,b){
+        let result = (a -(a*0.1))
+        if(b == true){result = result -1.5}
+        return result
+      }
+
+      console.log(할인계산기(150, false))
+    </script> --> -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
