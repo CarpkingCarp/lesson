@@ -73,6 +73,31 @@
           </form>
         </div>
       </div> 
+      
+      <script>
+        $('#close').on('click', function(){
+            $('.black-bg').removeClass('show-modal');
+        });
+
+        $('#login').on('click', function(){
+            $('.black-bg').addClass('show-modal');
+        });
+
+        // 모달창 검은 배경 누르면 닫는 기능 만들기
+        $('.black-bg').on('click', function(e){
+         if($(e.target).is$('.black-bg')){
+          $('.black-bg').removeClass('show-modal');
+         }
+         
+         console.log(e.target);
+         console.log($('.black-bg'))
+          // e.target; 유저가 실제로 누른 것
+          // e.currentTarget; = this(여기서만) 이벤트리스너 달린 곳
+          // e.preventDefault(); 이벤트 기본동작을 막음 -> subbmit에선 기본값은 동작 x
+          // e.stopPropagation; //상위요소로의 이벤트 버블링 막음
+        })
+
+      </script>
 
       <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -89,7 +114,7 @@
     if($(window).scrollTop() > 100){
         $('.navbar-brand').css('font-size', '20px');
     } else {
-        $('.navbar-brand').css('font-size', '100px')
+        $('.navbar-brand').css('font-size', '40px')
     }
 });
         // div 스크롤바 내린 양(scrolltop) + 눈에보이는 div 높이(clientheight) (픽셀 여유 두고 비교)== div의 실제높이(scrollheight)
@@ -117,24 +142,12 @@
           e.preventDefault();
         });
 
-      </script>
-
-      <!-- <script>
-
         // 코딩해야 하는 것
 
         // 1. 로그인하세요가 뜬 모달창에서의 닫기버튼을 누르면 모달창이 사라져야 함
         // 닫기버튼을 지정해야함 -> 모달창이 사라지게 해야함 가장 부모태그는 black-bg
 
         // 처음에 안뜨게하려고 bg에 디스플레이 논 부여. 그리고 로그인 눌렀을 때 떠야하는데 왜 안뜸??
-        $('#close').on('click', function(){
-            $('.black-bg').removeClass('show-modal');
-        });
-
-        $('#login').on('click', function(){
-            $('.black-bg').addClass('show-modal');
-        });
-
 
         document.querySelectorAll('.list-group-item')[1]
 
@@ -143,7 +156,7 @@
             document.querySelector('.list-group').classList.toggle('show');
         })
       </script>
-      <div style="overflow: hidden;">
+      <!-- <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
               <img src="car1.png">
@@ -160,7 +173,7 @@
       <button class="slide-2">2</button>
       <button class="slide-3">3</button>
       <button class="previous">이전</button>
-      <button class="next">다음</button>
+      <button class="next">다음</button> -->
 
 
 
