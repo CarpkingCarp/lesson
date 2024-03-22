@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // function 삼육구게임(num) {
+        //     if (num % 9 == 0) {console.log("박수x2");}
+        //     else if (num % 3 == 0) {console.log("박수");}
+        //     else {console.log('통과')};
+        // }
+
+        // 삼육구게임(5);
+
+
+        function 시험점수(num1, num2){
+            if (!Number.isInteger(num1) || !Number.isInteger(num2)) {
+        alert('매개변수는 정수로만 입력되어야 합니다.');
+        return;
+            }         
+
+            if (num1 < 40 || num2 < 40){console.log('불합격')}
+            else if (num1 + num2 > 120){console.log('합격')}
+            else {console.log('불합격')}
+        }
+
+
+        시험점수(60, 5.5);
+    </script>
+
+</body>
+</html>

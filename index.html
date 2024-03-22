@@ -82,6 +82,12 @@
 
       </div>
 
+      <div class="progress-bar">
+        <div class="progress">
+
+        </div>
+      
+      </div>
       <div style="height: 1000px;"></div>
       <script>
         // 스크롤바 100px 내리면 로고폰트 작게 만들기
@@ -89,7 +95,7 @@
     if($(window).scrollTop() > 100){
         $('.navbar-brand').css('font-size', '20px');
     } else {
-        $('.navbar-brand').css('font-size', '100px')
+        $('.navbar-brand').css('font-size', '40px')
     }
 });
         // div 스크롤바 내린 양(scrolltop) + 눈에보이는 div 높이(clientheight) (픽셀 여유 두고 비교)== div의 실제높이(scrollheight)
@@ -117,7 +123,15 @@
           e.preventDefault();
         });
 
-      </script>
+      // 현재의 페이지 스크롤 값이 과거보다 높아진 경우 프로그레스 바 이동
+      // div박스2 개 설정 & css 값 부여
+      // 이를 실행하는 스크립트 설정
+      // 첫 로딩 당시 페이지 스크롤 수준 -> 이전의 스크롤
+      // 페이지 스크롤 시 변한 값 -> 현재의 페이지 스크롤
+      // width에 %값을 부여
+    
+
+  </script>
 
       <!-- <script>
 
