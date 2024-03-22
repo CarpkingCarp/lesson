@@ -61,10 +61,11 @@
   <script>
 
     var car1 = ['소나타', 50000, 'white'];
-    var car2 = {name : '소나타', price : 50000}
+    var car2 = {name : '소나타', price : [50000, 3000, 4000]}
+    var car3 = ['소나타', {price:50000}]
 
     $('.head-name').html(car2['name']);
-    $('.head-price').html(car2.price);
+    $('.head-price').html(car2.price[0]);
   </script>
   
   <div class="container mt-5">
@@ -83,6 +84,31 @@
       <p>배송정보입니다. Shipping</p>
     </div>
   </div> 
+
+  <form class="container my-5 form-group">
+    <p>상품선택</p>
+    <select class="form-select mt-2">
+      <option>모자</option>
+      <option class="form-select-shirts">셔츠</option>
+    </select>
+    <select class="form-select mt-2 hide">
+      <option>95</option>
+      <option>100</option>
+      <option>105</option>
+    </select>
+  </form>
+
+
+  
+  <script>
+    var 선택지 = $('.form-select')
+    선택지.eq(0).on('input', function(){
+      if($(this).val() == '셔츠'){
+        선택지.eq(1).removeClass('hide');
+    } else {선택지.eq(1).addClass('hide');}
+
+    })
+</script>
 
   <script src="tab.js"></script>
 
