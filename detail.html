@@ -90,6 +90,7 @@
     <select class="form-select mt-2">
       <option>모자</option>
       <option class="form-select-shirts">셔츠</option>
+      <option>바지</option>
     </select>
     <select class="form-select mt-2 hide">
       <option>95</option>
@@ -105,9 +106,28 @@
     선택지.eq(0).on('input', function(){
       if($(this).val() == '셔츠'){
         선택지.eq(1).removeClass('hide');
-    } else {선택지.eq(1).addClass('hide');}
-
+        선택지.eq(1).선택지2.remove();
+    } else if($(this).val() == '바지') {
+      선택지.eq(1).removeClass('hide');
+      선택지.eq(1).html('');
+    let 선택지2 =`<option>28</option>
+      <option>30</option>
+      <option>32</option>`
+      선택지.eq(1).append(선택지2);}
     })
+
+
+
+    // document.querySelector('form-select')[1].innerhtml('beforeend', 바지사이즈1);
+    // 선택지.eq(0).on('input', function(){
+    //   if($(this).val() == '바지'){
+    //     선택지.eq(1).removeClass('hide');
+    //     선택지.eq(1).html(selectElement);
+
+
+    // } else {선택지.eq(1).addClass('hide');}
+    // })
+
 </script>
 
   <script src="tab.js"></script>
