@@ -144,15 +144,35 @@
 
         // 9x9단 만들어야함.
         // 파라미터 2개 필요
-        var 구구단1 = [1,2,3,4,5,6,7,8,9]
-        var 구구단2 = [2,3,4,5,6,7,8,9]
+        // var 구구단1 = [1,2,3,4,5,6,7,8,9]
+        // var 구구단2 = [2,3,4,5,6,7,8,9]
         // 구구단2는 1에 다 곱함 & 다 곱했으면 3단 4단~ 9단까지 하고 return
         
-        function 구구단(i){
-          (구구단2[i] * 구구단1)
+        // function 구구단(i){
+        //   (구구단2[i] * 구구단1)
 
-        }
-       구구단(2);
+        // }
+
+    
+        // for (let i = 1; i < 10; i++){
+        // for (let n = 2; n < 10; n++)
+        // {console.log (n*i)}};
+
+        // 모의고사 점수 테스트
+        // 1번째 array의 평균 값과 2번째 숫자 값의 비교
+        let abcd1 = [30,40,50,60,70]
+          function 함수 (abcd1, b){
+          var result = 0;
+
+          for (let i = 0; i< abcd1.length; i++){
+            result = result + abcd1[i];}
+
+            if(result/abcd1.length < b){
+              console.log(`와 전보다 ${ result/abcd1.lenght - b}만큼 올랐네요`)
+            } else(console.log('떨어졌네요'))
+          }
+
+          함수(abcd1, 100)
 
 </script>
 

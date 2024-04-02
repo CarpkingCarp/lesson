@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 페이지</title>
+</head>
+<body>
+    <div id="cart-items">
+        <!-- 여기에 상품명이 추가될 것입니다. -->
+    </div>
+
+    <script>
+        // 로컬 저장소에서 'cart' 항목을 가져옵니다.
+        var cartItems = JSON.parse(localStorage.getItem('cart'));
+        
+        // cartItems가 존재하고 배열 형태인 경우 각 상품명을 화면에 추가합니다.
+        if (cartItems && cartItems.length > 0) {
+            var cartContainer = document.getElementById('cart-items');
+            cartItems.forEach(function(item) {
+                var productName = document.createElement('p');
+                productName.textContent = item.name;
+                cartContainer.appendChild(productName);
+            });
+        } else {
+            console.log('장바구니가 비어 있습니다.');
+        }
+    </script>
+</body>
+</html>

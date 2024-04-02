@@ -173,17 +173,17 @@
         function(){
             document.querySelector('.list-group').classList.toggle('show');
         })
-      </script>
-      <!-- <div style="overflow: hidden;">
+      </script> -->
+       <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
-              <img src="car1.png">
+              <img src="car1.png" draggable="false">
             </div>
             <div class="slide-box">
-              <img src="car2.png">
+              <img src="car2.png" draggable="false">
             </div>
             <div class="slide-box">
-              <img src="car3.png">
+              <img src="car3.png" draggable="false">
             </div>
         </div>
       </div>
@@ -191,12 +191,93 @@
       <button class="slide-2">2</button>
       <button class="slide-3">3</button>
       <button class="previous">이전</button>
-      <button class="next">다음</button> -->
+      <button class="next">다음</button>
+
+      <script>
+        var 시작좌표 = 0;
+        var 눌렀냐 = false;
+        var 이동거리 = 0;
+      
+        $('.slide-box').eq(0).on('mousedown', function(e){
+            시작좌표 = e.clientX;
+            눌렀냐 = true;
+          });
+
+          $('.slide-box').eq(0).on('mousemove', function(e){
+            if (눌렀냐 === true) {
+              if(e.clientX - 시작좌표 < 0){
+              $('.slide-container').css('transform', `translateX( ${e.clientX - 시작좌표 - 100}px )`)}
+            }
+          });
+          $('.slide-box').eq(0).on('mouseup', function(e){
+          눌렀냐 = false;
+
+          if (e.clientX - 시작좌표 < -100) {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-100vw)');
+          } else if(e.clientX - 시작좌표 > 0) {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(0vw)');
+          }
+          setTimeout(()=>{
+            $('.slide-container').css('transition', 'none')
+          }, 500)
+          
+        });
+
+        $('.slide-box').eq(1).on('mousedown', function(e){
+            시작좌표 = e.clientX;
+            눌렀냐 = true;
+          });
+
+          $('.slide-box').eq(1).on('mousemove', function(e){
+            if (눌렀냐 === true) {
+              $('.slide-container').css('transform', `translateX(calc(${e.clientX - 시작좌표 - 100})px)`)
+            }
+          });
+          $('.slide-box').eq(1).on('mouseup', function(e){
+          눌렀냐 = false;
+
+          if (e.clientX - 시작좌표 < -100) {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-200vw)');
+          } else {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(0vw)');
+          }
+          setTimeout(()=>{
+            $('.slide-container').css('transition', 'none')
+          }, 500)
+          
+        });
 
 
+        $('.slide-box').eq(2).on('mousedown', function(e){
+            시작좌표 = e.clientX;
+            눌렀냐 = true;
+          });
 
-   
-      <!-- <form>
+          $('.slide-box').eq(2).on('mousemove', function(e){
+            if (눌렀냐 === true) {
+              $('.slide-container').css('transform', `translateX( calc(${e.clientX - 시작좌표 - 200})px )`)
+            }
+          });
+          $('.slide-box').eq(2).on('mouseup', function(e){
+          눌렀냐 = false;
+
+          if (e.clientX - 시작좌표 < -100) {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-200vw)');
+          } else {
+            $('.slide-container').css('transition', 'all 0.5s').css('transform', 'translateX(-100vw)');
+          }
+          setTimeout(()=>{
+            $('.slide-container').css('transition', 'none')
+          }, 500)
+          
+        });
+
+      
+      </script>
+                                                                  
+
+
+      <form>
         <script>
           var 지금사진 = 1;
 
@@ -243,16 +324,16 @@
             지금사진 -= 1;}
           })
           
-          // $('.next').on('click', function(){
-          //   $('.slide-container').css('transform', 'translate(-'+지금사진 +'00vw)');
-          //   지금사진 += 1;
-          // })
-          // $('.previous').on('click', function(){
-          //   $('.slide-container').css('transform', 'translate(+'+지금사진 +'00vw)');
-          //   지금사진 -= 1;
-          // })
+          $('.next').on('click', function(){
+            $('.slide-container').css('transform', 'translate(-'+지금사진 +'00vw)');
+            지금사진 += 1;
+          })
+          $('.previous').on('click', function(){
+            $('.slide-container').css('transform', 'translate(+'+지금사진 +'00vw)');
+            지금사진 -= 1;
+          })
         </script>
-      </form> -->
+      </form>
 
     <!-- <script> -->
       <!-- // function 시간ms계산기(A,B){
